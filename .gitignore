@@ -14,4 +14,5 @@ yarn-error.log
 .env.example
 .gitattributes
 .gitignore
+.idea/
 .styleci.yml
