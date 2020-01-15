@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+$version1 = 'v1';
+
+Route::resource("/$version1/hotels", 'HotelController');
+Route::resource("/$version1/locations", 'HotelController');

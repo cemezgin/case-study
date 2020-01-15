@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c8445f26b4b70c40f10834c2bd4cc23",
+    "content-hash": "3a16ab7a977841b0e5facc6fc5eb6045",
     "packages": [
         {
             "name": "darkaonline/l5-swagger",
@@ -1152,6 +1152,47 @@
                 "serialize"
             ],
             "time": "2019-11-29T22:36:02+00:00"
+        },
+        {
+            "name": "optimus/heimdal",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/esbenp/heimdal.git",
+                "reference": "6cb406b2acd2c4cec948099a9855a0f5a1aed437"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/esbenp/heimdal/zipball/6cb406b2acd2c4cec948099a9855a0f5a1aed437",
+                "reference": "6cb406b2acd2c4cec948099a9855a0f5a1aed437",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.3"
+            },
+            "require-dev": {
+                "bugsnag/bugsnag-laravel": "^2.4",
+                "mockery/mockery": "0.9.*",
+                "orchestra/testbench": "~3.1",
+                "phpunit/phpunit": "~4.7",
+                "satooshi/php-coveralls": "dev-master@dev"
+            },
+            "suggest": {
+                "asm89/stack-cors": "Needed to add CORS headers if add_cors_headers configuration is true",
+                "rollbar/rollbar": "Needed to report exceptions to Rollbar.com",
+                "sentry/sentry": "Needed to report exceptions to Sentry.io"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Optimus\\Heimdal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "time": "2017-08-05T10:53:12+00:00"
         },
         {
             "name": "paragonie/random_compat",

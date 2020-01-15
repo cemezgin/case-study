@@ -2,8 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-use App\Hotel;
-
 interface HotelRepositoryInterface
 {
     public function all();

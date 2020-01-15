@@ -36,6 +36,8 @@ class HotelController extends Controller
     {
         if ($request->validated()) {
             return response()->json($this->hotelRepository->save($request));
+        } else {
+            return response()->exception;
         }
     }
 

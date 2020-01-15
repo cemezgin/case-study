@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
-});
+$version1 = 'v1';
+
+Route::resource("/$version1/hotels", 'HotelController');
+Route::resource("/$version1/locations", 'HotelController');

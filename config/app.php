@@ -174,6 +174,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
+        App\Providers\ResponseServiceProvider::class,
+        Optimus\Heimdal\Provider\LaravelServiceProvider::class,
 
     ],
 
