@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Hotel;
 use App\Http\Requests\StoreHotelRequest;
-use App\Repositories\Interfaces\HotelRepositoryInterface;
+use App\Location;
+use App\Repositories\Interfaces\LocationRepositoryInterface;
 use Illuminate\Http\Request;
 
-class HotelController extends Controller
+class LocationController extends Controller
 {
+    private $locationRepository;
 
-    private $hotelRepository;
-
-    public function __construct(HotelRepositoryInterface $hotelRepository)
+    public function __construct(LocationRepositoryInterface $locationRepository)
     {
-        $this->hotelRepository = $hotelRepository;
+        $this->locationRepository = $locationRepository;
     }
 
     /**
@@ -24,7 +23,7 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return response()->json($this->hotelRepository->all());
+        return $this->locationRepository->all();
     }
 
     /**
@@ -34,9 +33,7 @@ class HotelController extends Controller
      */
     public function store(StoreHotelRequest $request)
     {
-        if ($request->validated()) {
-            return response()->json($this->hotelRepository->save($request));
-        }
+        return $this->locationRepository->save($request);
     }
 
     /**
@@ -47,28 +44,28 @@ class HotelController extends Controller
      */
     public function show($id)
     {
-        return response()->json($this->hotelRepository->getByHotel($id));
+        return $this->locationRepository->getByLocation($id);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Hotel $hotel
+     * @param \App\Location $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(Request $request, Location $location)
     {
-        return response()->json($this->hotelRepository->update($request, $hotel));
+        return $this->locationRepository->update($request, $location);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove  the specified resource from storage.
      * @param $id
      * @return mixed
      */
     public function destroy($id)
     {
-        return response()->json($this->hotelRepository->delete($id));
+        return $this->locationRepository->delete($id);
     }
 }

@@ -1,31 +1,40 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 use App\Hotel;
+use App\Location;
+use App\Service\Interfaces\HotelServiceInterface;
+use App\Service\Interfaces\LocationServiceInterface;
 
-class HotelService
+class HotelService implements HotelServiceInterface
 {
     const REPUTATION_BADGE_RED = 'red',
         REPUTATION_BADGE_YELLOW = 'yellow',
         REPUTATION_BADGE_GREEN = 'green';
 
-    /**
-     * @param $request
-     * @return bool
-     */
+    private $locationService;
+
+    public function __construct(LocationServiceInterface $locationService)
+    {
+        $this->locationService = $locationService;
+    }
+
     public function save($request)
     {
         $hotel = new Hotel;
         $hotel = $this->map($hotel, $request);
 
-        return $hotel->save();
+        $location = $this->locationService->save($request->location);
+        $hotel->save();
+
+        return $hotel->location()->save($location);
     }
 
     /**
      * @param $request
      * @param $hotel Hotel
-     * @return bool
+     * @return mixed
      */
     public function update($request, $hotel)
     {

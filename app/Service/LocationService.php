@@ -5,7 +5,7 @@ namespace App\Service;
 use App\Location;
 use App\Service\Interfaces\LocationServiceInterface;
 
-class LocationService
+class LocationService implements LocationServiceInterface
 {
     public function save($request)
     {
