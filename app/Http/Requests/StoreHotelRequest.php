@@ -25,18 +25,19 @@ class StoreHotelRequest extends FormRequest
     {
         //extend name with contains word
         return [
-            'name' => 'required |  max:10',
+            'name' => 'required | min:10',
             'rating' => 'required | numeric | between:1,5',
             'category' => 'required | in:hotel, alternative, hostel, lodge, resort, guest-house',
             'reputation' => 'required | numeric | min:0 | max: 1000',
             'price' => 'required | numeric',
-            'availability' => 'required | numeric'
+            'availability' => 'required | numeric',
+            'image' => 'regex:/^http:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/'
         ];
     }
 
     public function messages()
     {
-        return[
+        return [
             'name.required' => 'The name field is required.'
         ];
     }

@@ -27,8 +27,9 @@ class HotelService implements HotelServiceInterface
 
         $location = $this->locationService->save($request->location);
         $hotel->save();
+        $hotel->location()->save($location);
 
-        return $hotel->location()->save($location);
+        return $hotel;
     }
 
     /**

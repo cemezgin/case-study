@@ -33,7 +33,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json($this->locationRepository->save($request),201);
+        return response()->json($this->locationRepository->save($request), 201);
     }
 
     /**

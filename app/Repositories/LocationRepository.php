@@ -41,3 +41,4 @@ class LocationRepository implements LocationRepositoryInterface
     }
 
 }
+

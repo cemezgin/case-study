@@ -32,7 +32,9 @@ class HotelRepository implements HotelRepositoryInterface
 
     public function save($request)
     {
-        return $this->hotelService->save($request);
+        $hotel = $this->hotelService->save($request);
+
+        return $this->getByHotel($hotel->id);
     }
 
     public function update($request, Hotel $hotel)
@@ -41,3 +43,4 @@ class HotelRepository implements HotelRepositoryInterface
     }
 
 }
+
