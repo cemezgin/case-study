@@ -16,3 +16,4 @@ $version1 = 'v1';
 
 Route::resource("/$version1/hotels", 'HotelController');
 Route::resource("/$version1/locations", 'HotelController');
+Route::get("/$version1/hotels/{id}/check-bookings", 'HotelController@check');

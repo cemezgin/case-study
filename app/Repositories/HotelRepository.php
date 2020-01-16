@@ -42,5 +42,18 @@ class HotelRepository implements HotelRepositoryInterface
         return $this->hotelService->update($request, $this->getByHotel($hotel->id));
     }
 
+    public function checkBookingAvailability($id)
+    {
+        $check =  Hotel::where('availability', '>', 0)
+            ->where('id', $id)
+            ->first();
+
+        if($check){
+            return true;
+        }
+
+        return false;
+    }
+
 }
 

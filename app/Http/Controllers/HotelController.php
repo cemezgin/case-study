@@ -20,8 +20,7 @@ class HotelController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -29,6 +28,9 @@ class HotelController extends Controller
     }
 
     /**
+     *
+     * Store a given resource.
+     *
      * @param StoreHotelRequest $request
      * @return \Exception|\Illuminate\Http\JsonResponse|null
      * @throws \Exception
@@ -70,11 +72,23 @@ class HotelController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
      * @param $id
      * @return mixed
      */
     public function destroy($id)
     {
         return response()->json($this->hotelRepository->delete($id));
+    }
+
+    /**
+     * Check is booking available for hotel
+     *
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function check($id)
+    {
+        return response()->json($this->hotelRepository->checkBookingAvailability($id));
     }
 }

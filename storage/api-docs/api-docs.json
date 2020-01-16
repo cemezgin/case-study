@@ -160,6 +160,25 @@
                     }
                 }
             }
+        },
+        "/hotels/{id}/check-bookings": {
+            "get": {
+                "tags": [
+                    "hotels"
+                ],
+                "summary": "Check booking availability for hotel of given id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
     },
     "definitions": {
