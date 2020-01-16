@@ -64,10 +64,15 @@ class HotelController extends Controller
      * @param \App\Hotel $hotel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(StoreHotelRequest $request, Hotel $hotel)
     {
-        HotelHelper::checkSpecialWords($request->name);
-        return response()->json($this->hotelRepository->update($request, $hotel));
+        if ($request->validated()) {
+            HotelHelper::checkSpecialWords($request->name);
+            return response()->json($this->hotelRepository->update($request, $hotel));
+
+        } else {
+            return response()->exception;
+        }
     }
 
     /**

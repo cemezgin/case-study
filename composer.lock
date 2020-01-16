@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0dc4451cdbb0ba9cc18547372ae112bf",
+    "content-hash": "faad7c23323fffe15bdcc52de1c7938f",
     "packages": [
         {
             "name": "crell/api-problem",

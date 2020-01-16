@@ -15,9 +15,4 @@ class Hotel extends Model
     {
         return $this->hasMany(Location::class);
     }
-
-    public function booking()
-    {
-        return $this->hasOne(Booking::class);
-    }
 }
