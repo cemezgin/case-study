@@ -1,37 +1,57 @@
-## Executing guide
-######Run following commands
-`If the postgresql not installed:`
+# Trivago Case Study
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
 https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3
+```
 
-`pg_ctl -D /usr/local/var/postgres start`
+### Installing
 
-`createdb hotel_list`
+After installed postgresql successfully, you have to start postgres:
 
-######Update your .env
+```pg_ctl -D /usr/local/var/postgres start```
 
-DB_CONNECTION=pgsql
+And create database
 
-DB_HOST=127.0.0.1
+```createdb hotel_list```
 
-DB_PORT=5432
+### Update your .env
 
-DB_DATABASE=hotel_list
+```DB_CONNECTION=pgsql```
 
-DB_USERNAME=
+```DB_HOST=127.0.0.1```
 
-DB_PASSWORD=
+```DB_PORT=5432```
 
-######Migrate Db
-`php artisan migrate`
+```DB_DATABASE=hotel_list```
 
-######Serve
-`php artisan serve`
+```DB_USERNAME=```
 
-######Documentation
+```DB_PASSWORD=```
+
+### Migrate Db
+```php artisan migrate```
+
+### Serve
+```php artisan serve```
+
+#### Documentation
 
 http://127.0.0.1:8000/api/documentation
 
-######Run Tests
+#### Run Tests
 
- `./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests`
+ ```./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests```
+
+
+
+
+
 
