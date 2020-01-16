@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\HotelHelper;
 use App\Hotel;
 use App\Http\Requests\StoreHotelRequest;
 use App\Repositories\Interfaces\HotelRepositoryInterface;
@@ -28,14 +29,16 @@ class HotelController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param StoreHotelRequest $request
+     * @return \Exception|\Illuminate\Http\JsonResponse|null
+     * @throws \Exception
      */
     public function store(StoreHotelRequest $request)
     {
         if ($request->validated()) {
-            return response()->json($this->hotelRepository->save($request));
+            HotelHelper::checkSpecialWords($request->name);
+            return response()
+                ->json($this->hotelRepository->save($request), 201);
         } else {
             return response()->exception;
         }
@@ -61,6 +64,7 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
+        HotelHelper::checkSpecialWords($request->name);
         return response()->json($this->hotelRepository->update($request, $hotel));
     }
 

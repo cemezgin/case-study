@@ -23,7 +23,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        return $this->locationRepository->all();
+        return response()->json($this->locationRepository->all());
     }
 
     /**
@@ -31,9 +31,9 @@ class LocationController extends Controller
      *
      * @param StoreHotelRequest $request
      */
-    public function store(StoreHotelRequest $request)
+    public function store(Request $request)
     {
-        return $this->locationRepository->save($request);
+        return response()->json($this->locationRepository->save($request),201);
     }
 
     /**
@@ -44,7 +44,7 @@ class LocationController extends Controller
      */
     public function show($id)
     {
-        return $this->locationRepository->getByLocation($id);
+        return response()->json($this->locationRepository->getByLocation($id));
     }
 
     /**
@@ -56,7 +56,7 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        return $this->locationRepository->update($request, $location);
+        return response()->json($this->locationRepository->update($request, $location));
     }
 
     /**
@@ -66,6 +66,6 @@ class LocationController extends Controller
      */
     public function destroy($id)
     {
-        return $this->locationRepository->delete($id);
+        return response()->json($this->locationRepository->delete($id));
     }
 }

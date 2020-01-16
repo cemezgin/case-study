@@ -25,7 +25,7 @@ class StoreHotelRequest extends FormRequest
     {
         //extend name with contains word
         return [
-            'name' => 'required | not_in:Free, Offer, Book, Website | max:10',
+            'name' => 'required |  max:10',
             'rating' => 'required | numeric | between:1,5',
             'category' => 'required | in:hotel, alternative, hostel, lodge, resort, guest-house',
             'reputation' => 'required | numeric | min:0 | max: 1000',
