@@ -18,7 +18,7 @@ class CreateLocationsTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->string('zip_code');
+            $table->integer('zip_code');
             $table->string('address');
             $table->integer('hotel_id');
 

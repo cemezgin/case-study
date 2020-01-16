@@ -31,7 +31,7 @@ class StoreHotelRequest extends FormRequest
             'reputation' => 'required | numeric | min:0 | max: 1000',
             'price' => 'required | numeric',
             'availability' => 'required | numeric',
-            'image' => 'regex:/^http:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/'
+            'image' => 'regex:/^https:\/\/\w+(\.\w+)*(:[0-9]+)?\/?$/'
         ];
     }
 

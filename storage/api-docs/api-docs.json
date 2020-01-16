@@ -1,0 +1,423 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Trivago Case Study"
+    },
+    "basePath": "/v1",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/hotels": {
+            "post": {
+                "tags": [
+                    "hotels"
+                ],
+                "summary": "Add a new hotel with location",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "description": "Hotel and Location object that needs to be added to the store",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HotelLocationPost"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "405": {
+                        "description": "Validation Exception"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "hotels"
+                ],
+                "summary": "Get all hotel list",
+                "description": "Get hotel list with location",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/HotelLocation"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/hotels/{id}": {
+            "get": {
+                "tags": [
+                    "hotels"
+                ],
+                "summary": "Get hotel list of given id",
+                "description": "Get hotel list with location",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "$ref": "#/definitions/HotelLocation"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "hotels"
+                ],
+                "summary": "Update an existing hotel",
+                "description": "",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Hotel object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Hotel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Hotel not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "hotels"
+                ],
+                "summary": "Deletes a hotel",
+                "description": "",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "hotelId",
+                        "in": "path",
+                        "description": "Hotel id to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Hotel not found"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Hotel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Cannot contain the words 'Free','Offer','Book,'Website'."
+                },
+                "rating": {
+                    "type": "integer",
+                    "format": "int32",
+                    "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                },
+                "image": {
+                    "type": "string",
+                    "format": "link",
+                    "example": "https://s3.amazonaws.com/bucket/path/image.png"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "hotel",
+                        "alternative",
+                        "hostel",
+                        "lodge",
+                        "resort",
+                        "guest-house"
+                    ]
+                },
+                "reputation": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "It should be between 0-1000."
+                },
+                "reputation_bage": {
+                    "type": "string",
+                    "description": "Auto calculated for the reputation value",
+                    "enum": [
+                        "red",
+                        "yellow",
+                        "green"
+                    ]
+                },
+                "price": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "availability": {
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Location": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "zip_code": {
+                    "type": "integer"
+                },
+                "address": {
+                    "type": "string"
+                },
+                "hotel_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "HotelLocation": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Cannot contain the words 'Free','Offer','Book,'Website'."
+                },
+                "rating": {
+                    "type": "integer",
+                    "format": "int32",
+                    "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                },
+                "image": {
+                    "type": "string",
+                    "format": "link",
+                    "example": "https://s3.amazonaws.com/bucket/path/image.png"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "hotel",
+                        "alternative",
+                        "hostel",
+                        "lodge",
+                        "resort",
+                        "guest-house"
+                    ]
+                },
+                "reputation": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "It should be between 0-1000."
+                },
+                "reputation_bage": {
+                    "type": "string",
+                    "description": "Auto calculated for the reputation value",
+                    "enum": [
+                        "red",
+                        "yellow",
+                        "green"
+                    ]
+                },
+                "price": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "availability": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "city": {
+                            "type": "string"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "string"
+                        },
+                        "zip_code": {
+                            "type": "integer",
+                            "example": 12345
+                        },
+                        "address": {
+                            "type": "string"
+                        },
+                        "hotel_id": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "HotelLocationPost": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Cannot contain the words 'Free','Offer','Book,'Website'."
+                },
+                "rating": {
+                    "type": "integer",
+                    "format": "int32",
+                    "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ]
+                },
+                "image": {
+                    "type": "string",
+                    "format": "link",
+                    "example": "https://s3.amazonaws.com/bucket/path/image.png"
+                },
+                "category": {
+                    "type": "string",
+                    "enum": [
+                        "hotel",
+                        "alternative",
+                        "hostel",
+                        "lodge",
+                        "resort",
+                        "guest-house"
+                    ]
+                },
+                "reputation": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "It should be between 0-1000."
+                },
+                "reputation_bage": {
+                    "type": "string",
+                    "description": "Auto calculated for the reputation value",
+                    "enum": [
+                        "red",
+                        "yellow",
+                        "green"
+                    ]
+                },
+                "price": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "availability": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "location": {
+                    "type": "object",
+                    "properties": {
+                        "city": {
+                            "type": "string"
+                        },
+                        "state": {
+                            "type": "string"
+                        },
+                        "country": {
+                            "type": "string"
+                        },
+                        "zip_code": {
+                            "type": "integer",
+                            "example": 12345
+                        },
+                        "address": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

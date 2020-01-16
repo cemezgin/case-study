@@ -9,7 +9,7 @@ class HotelHelper
     public static function checkSpecialWords($name)
     {
         if (preg_match('[Free|Offer|Book|Website]', $name)) {
-            throw new HttpException(400, 'Name can not contain Free, Offer, Book, Website words.');
+            throw new HttpException(405, 'Name can not contain Free, Offer, Book, Website words.');
         }
     }
 }
