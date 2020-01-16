@@ -30,3 +30,8 @@ DB_PASSWORD=
 ######Documentation
 
 http://127.0.0.1:8000/api/documentation
+
+######Run Tests
+
+ `./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests`
+
