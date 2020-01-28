@@ -36,6 +36,10 @@ And create database
 
 ```DB_PASSWORD=```
 
+### Install Composer
+```brew install composer```
+```composer install```
+
 ### Migrate Db
 ```php artisan migrate```
 
