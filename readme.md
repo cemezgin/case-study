@@ -16,11 +16,15 @@ https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3
 
 After installed postgresql successfully, you have to start postgres:
 
-```pg_ctl -D /usr/local/var/postgres start```
+```
+pg_ctl -D /usr/local/var/postgres start
+```
 
 And create database
 
-```createdb hotel_list```
+```
+createdb hotel_list
+```
 
 ### Update your .env
 
@@ -37,14 +41,20 @@ And create database
 ```DB_PASSWORD=```
 
 ### Install Composer
-```brew install composer```
-```composer install```
+```
+brew install composer
+composer install
+```
 
 ### Migrate Db
-```php artisan migrate```
+```
+php artisan migrate
+```
 
 ### Serve
-```php artisan serve```
+```
+php artisan serve
+```
 
 #### Documentation
 
@@ -52,7 +62,9 @@ http://127.0.0.1:8000/api/documentation
 
 #### Run Tests
 
- ```./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests```
+ ```
+ ./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox tests
+ ```
 
 
 
