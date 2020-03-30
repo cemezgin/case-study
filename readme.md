@@ -8,8 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Install postgresql
 ```
-https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3
-```
+https://www.postgresqltutorial.com/install-postgresql/```
 
 ### Installing
 
@@ -27,17 +26,14 @@ createdb hotel_list
 
 ### Update your .env
 
-```DB_CONNECTION=pgsql```
-
-```DB_HOST=127.0.0.1```
-
-```DB_PORT=5432```
-
-```DB_DATABASE=hotel_list```
-
-```DB_USERNAME=```
-
-```DB_PASSWORD=```
+```
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=hotel_list
+DB_USERNAME=
+DB_PASSWORD=
+```
 
 ### Install Composer
 ```
